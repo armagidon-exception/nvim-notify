@@ -1,4 +1,4 @@
-local base = require("notify.render.base")
+local base = require "notify.render.base"
 
 return function(bufnr, notif, highlights)
   local namespace = base.namespace()
@@ -22,15 +22,18 @@ return function(bufnr, notif, highlights)
     hl_group = highlights.icon,
     end_col = icon_length + 1,
     priority = 50,
+    strict = false,
   })
   vim.api.nvim_buf_set_extmark(bufnr, namespace, 0, icon_length + 1, {
     hl_group = highlights.title,
     end_col = prefix_length + 1,
     priority = 50,
+    strict = false,
   })
   vim.api.nvim_buf_set_extmark(bufnr, namespace, 0, prefix_length + 1, {
     hl_group = highlights.body,
     end_line = #notif.message,
     priority = 50,
+    strict = false,
   })
 end
